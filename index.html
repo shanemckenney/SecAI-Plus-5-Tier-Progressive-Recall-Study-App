@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompTIA SecAI+ (CY0-001) 5-Tier Mastery App</title>
+    <style>
+        /* Dyslexia-Friendly & WCAG AAA Dark Mode Accessibility Theme */
+        :root {
+            --bg-color: #0F172A;
+            --card-bg: #1E293B;
+            --text-main: #F8FAFC;
+            --text-subtle: #94A3B8;
+            --border-color: #334155;
+            
+            /* 5-Tier Accent Palette */
+            --tier1-gold: #FACC15;
+            --tier2-blue: #38BDF8;
+            --tier3-teal: #2DD4BF;
+            --tier4-purple: #C084FC;
+            --tier5-coral: #FB923C;
+
+            --btn-bg: #334155;
+            --btn-hover: #475569;
+            --btn-active: #2563EB;
+            --focus-ring: #60A5FA;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            line-height: 1.65;
+            letter-spacing: 0.035em;
+            word-spacing: 0.05em;
+            padding: 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            width: 100%;
+            max-width: 850px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .subtitle {
+            color: var(--text-subtle);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .controls-top {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        select, button {
+            font-family: inherit;
+            font-size: 0.95rem;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background-color: var(--btn-bg);
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        select:focus, button:focus {
+            outline: 3px solid var(--focus-ring);
+            outline-offset: 2px;
+        }
+
+        button:hover {
+            background-color: var(--btn-hover);
+        }
+
+        .btn-primary {
+            background-color: #2563EB;
+            border-color: #3B82F6;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: #1D4ED8;
+        }
+
+        .card-counter {
+            font-weight: 600;
+            color: var(--text-subtle);
+        }
+
+        main {
+            width: 100%;
+            max-width: 850px;
+            flex-grow: 1;
+        }
+
+        #error-banner {
+            display: none;
+            background-color: #7F1D1D;
+            color: #FEE2E2;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #991B1B;
+        }
+
+        .flashcard {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1.5rem;
+        }
+
+        .tier-block {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            background-color: rgba(15, 23, 42, 0.6);
+            border-left: 6px solid var(--border-color);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .tier-block.hidden {
+            display: none;
+        }
+
+        .tier-header {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .tier-1 { border-left-color: var(--tier1-gold); }
+        .tier-1 .tier-header { color: var(--tier1-gold); }
+
+        .tier-2 { border-left-color: var(--tier2-blue); }
+        .tier-2 .tier-header { color: var(--tier2-blue); }
+
+        .tier-3 { border-left-color: var(--tier3-teal); }
+        .tier-3 .tier-header { color: var(--tier3-teal); }
+
+        .tier-4 { border-left-color: var(--tier4-purple); }
+        .tier-4 .tier-header { color: var(--tier4-purple); }
+
+        .tier-5 { border-left-color: var(--tier5-coral); }
+        .tier-5 .tier-header { color: var(--tier5-coral); }
+
+        .tier-content {
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+
+        .controls-bottom {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-subtle);
+        }
+
+        .key-hint {
+            background: var(--btn-bg);
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+            border: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>CompTIA SecAI+ (CY0-001) Mastery App</h1>
+        <div class="subtitle">5-Tier Progressive Recall Framework | Dyslexia-Friendly Dark Theme</div>
+        
+        <div class="controls-top">
+            <label for="batch-select" class="sr-only">Select Module Batch:</label>
+            <select id="batch-select" aria-label="Select Module Batch">
+                <option value="1">Batch 1: AI Types, Architectures & Model Training (Domain 1.1)</option>
+                <option value="2">Batch 2: Data Security, Vector Storage & RAG (Domain 1.2)</option>
+                <option value="3">Batch 3: AI Life Cycle & Human-Centric Design (Domain 1.3)</option>
+                <option value="4">Batch 4: Threat Modeling, Frameworks & OWASP/ATLAS (Domain 2.1)</option>
+                <option value="5">Batch 5: Security Controls, Guardrails & Access Control (Domain 2.2 - 2.4)</option>
+                <option value="6">Batch 6: AI Attacks, Exploits & Compensating Controls (Domain 2.5 - 2.6)</option>
+                <option value="7">Batch 7: AI-Assisted Security & Adversarial Attacks (Domain 3.1 - 3.3)</option>
+                <option value="8">Batch 8: AI GRC, Responsible AI & Regulations (Domain 4.1 - 4.3)</option>
+            </select>
+            <div class="card-counter" id="card-counter">Card 0 of 0</div>
+        </div>
+    </header>
+
+    <main>
+        <div id="error-banner" role="alert"></div>
+
+        <article class="flashcard" id="flashcard">
+            <!-- Tier 1 -->
+            <div class="tier-block tier-1" id="tier-1">
+                <div class="tier-header">Tier 1: Acronym / Term & Expansion</div>
+                <div class="tier-content" id="tier-1-content">Loading...</div>
+            </div>
+
+            <!-- Tier 2 -->
+            <div class="tier-block tier-2 hidden" id="tier-2">
+                <div class="tier-header">Tier 2: Core Concept & Domain Category</div>
+                <div class="tier-content" id="tier-2-content"></div>
+            </div>
+
+            <!-- Tier 3 -->
+            <div class="tier-block tier-3 hidden" id="tier-3">
+                <div class="tier-header">Tier 3: Plain Language / Analogy Explanation</div>
+                <div class="tier-content" id="tier-3-content"></div>
+            </div>
+
+            <!-- Tier 4 -->
+            <div class="tier-block tier-4 hidden" id="tier-4">
+                <div class="tier-header">Tier 4: Compare & Contrast</div>
+                <div class="tier-content" id="tier-4-content"></div>
+            </div>
+
+            <!-- Tier 5 -->
+            <div class="tier-block tier-5 hidden" id="tier-5">
+                <div class="tier-header">Tier 5: Exam Attack Vector / Real-World Defense Scenario</div>
+                <div class="tier-content" id="tier-5-content"></div>
+            </div>
+        </article>
+
+        <div class="controls-bottom">
+            <button id="btn-reveal" class="btn-primary" aria-label="Reveal Next Tier (+1)">Reveal Next Tier (+1)</button>
+            <div class="nav-group">
+                <button id="btn-prev" aria-label="Previous Card">← Previous</button>
+                <button id="btn-next" aria-label="Next Card">Next →</button>
+                <button id="btn-reset" aria-label="Reset Progress">Reset Card</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        Shortcuts: <span class="key-hint">Space / Enter</span> Reveal Tier | <span class="key-hint">←</span> Previous Card | <span class="key-hint">→</span> Next Card
+    </footer>
+
+    <script>
+        let allCards = [];
+        let filteredCards = [];
+        let currentIndex = 0;
+        let currentRevealedTier = 1;
+
+        const batchSelect = document.getElementById('batch-select');
+        const cardCounter = document.getElementById('card-counter');
+        const errorBanner = document.getElementById('error-banner');
+
+        const btnReveal = document.getElementById('btn-reveal');
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+        const btnReset = document.getElementById('btn-reset');
+
+        // Async Card Fetching
+        async function loadCards() {
+            try {
+                const response = await fetch('cards.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                allCards = await response.json();
+                errorBanner.style.display = 'none';
+                filterAndRender();
+            } catch (error) {
+                console.error("Error loading cards.json:", error);
+                errorBanner.style.display = 'block';
+                errorBanner.innerHTML = `<strong>Data Loading Alert:</strong> Unable to load <code>cards.json</code>. If running locally without a web server, launch a local server (e.g., <code>python -m http.server</code>) or host via GitHub Pages.`;
+            }
+        }
+
+        function filterAndRender() {
+            const selectedBatch = parseInt(batchSelect.value, 10);
+            filteredCards = allCards.filter(card => card.batch === selectedBatch);
+            currentIndex = 0;
+            currentRevealedTier = 1;
+            renderCard();
+        }
+
+        function renderCard() {
+            if (filteredCards.length === 0) {
+                cardCounter.textContent = 'Card 0 of 0';
+                document.getElementById('tier-1-content').textContent = 'No cards found for this batch module.';
+                for (let i = 2; i <= 5; i++) {
+                    document.getElementById(`tier-${i}`).classList.add('hidden');
+                }
+                return;
+            }
+
+            const card = filteredCards[currentIndex];
+            cardCounter.textContent = `Card ${currentIndex + 1} of ${filteredCards.length}`;
+
+            // Populate Tier Content
+            document.getElementById('tier-1-content').innerHTML = `<strong>${card.tier1.term}</strong> (${card.tier1.acronym}) — ${card.tier1.expansion}`;
+            document.getElementById('tier-2-content').innerHTML = `<strong>Category:</strong> ${card.tier2.category}<br>${card.tier2.concept}`;
+            document.getElementById('tier-3-content').textContent = card.tier3.analogy;
+            document.getElementById('tier-4-content').textContent = card.tier4.compare;
+            document.getElementById('tier-5-content').textContent = card.tier5.attack_defense;
+
+            // Visibility State Management
+            for (let i = 1; i <= 5; i++) {
+                const tierElem = document.getElementById(`tier-${i}`);
+                if (i <= currentRevealedTier) {
+                    tierElem.classList.remove('hidden');
+                } else {
+                    tierElem.classList.add('hidden');
+                }
+            }
+
+            // Button label context
+            if (currentRevealedTier >= 5) {
+                btnReveal.textContent = 'All Tiers Revealed';
+                btnReveal.disabled = true;
+            } else {
+                btnReveal.textContent = `Reveal Tier ${currentRevealedTier + 1} (+1)`;
+                btnReveal.disabled = false;
+            }
+        }
+
+        // Action Handlers
+        function revealNextTier() {
+            if (currentRevealedTier < 5) {
+                currentRevealedTier++;
+                renderCard();
+            }
+        }
+
+        function prevCard() {
+            if (filteredCards.length === 0) return;
+            currentIndex = (currentIndex - 1 + filteredCards.length) % filteredCards.length;
+            currentRevealedTier = 1;
+            renderCard();
+        }
+
+        function nextCard() {
+            if (filteredCards.length === 0) return;
+            currentIndex = (currentIndex + 1) % filteredCards.length;
+            currentRevealedTier = 1;
+            renderCard();
+        }
+
+        function resetProgress() {
+            currentRevealedTier = 1;
+            renderCard();
+        }
+
+        // Event Listeners
+        batchSelect.addEventListener('change', filterAndRender);
+        btnReveal.addEventListener('click', revealNextTier);
+        btnPrev.addEventListener('click', prevCard);
+        btnNext.addEventListener('click', nextCard);
+        btnReset.addEventListener('click', resetProgress);
+
+        // Keyboard Controls
+        document.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'SELECT' || e.target.tagName === 'INPUT') return;
+
+            if (e.key === ' ' || e.key === 'Enter') {
+                e.preventDefault();
+                revealNextTier();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevCard();
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                nextCard();
+            }
+        });
+
+        // Initialize App
+        loadCards();
+    </script>
+</body>
+</html>
