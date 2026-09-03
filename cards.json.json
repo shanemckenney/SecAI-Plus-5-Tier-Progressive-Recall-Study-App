@@ -1,0 +1,278 @@
+[
+  {
+    "id": "B1-C01",
+    "batch": 1,
+    "domain": "Domain 1.1: Basic AI Concepts Related to Cybersecurity",
+    "tier1": {
+      "term": "Generative Artificial Intelligence",
+      "acronym": "GenAI",
+      "expansion": "Generative Artificial Intelligence"
+    },
+    "tier2": {
+      "category": "Domain 1.1 - AI Types & Architectures",
+      "concept": "AI models capable of producing novel content (text, code, images, audio, synthetic data) by learning probabilistic statistical patterns from massive training datasets."
+    },
+    "tier3": {
+      "analogy": "Like a master forgery artist who studies thousands of classical paintings to paint an entirely new, original artwork in the exact style of the masters."
+    },
+    "tier4": {
+      "compare": "Generative AI vs. Discriminative AI: Generative AI creates brand-new realistic data instances, whereas Discriminative AI evaluates and classifies existing input data into categories."
+    },
+    "tier5": {
+      "attack_defense": "Attack Vector: Threat actors use GenAI to generate targeted spear-phishing emails and polymorphic malware. Defense: Deploy prompt firewalls, AI output detection, watermarking, and human-in-the-loop validation."
+    }
+  },
+  {
+    "id": "B1-C02",
+    "batch": 1,
+    "domain": "Domain 1.1: Basic AI Concepts Related to Cybersecurity",
+    "tier1": {
+      "term": "Large Language Model",
+      "acronym": "LLM",
+      "expansion": "Large Language Model"
+    },
+    "tier2": {
+      "category": "Domain 1.1 - AI Types & Architectures",
+      "concept": "A deep learning model with billions of parameters trained on massive text corpora to understand, summarize, generate, and predict human language."
+    },
+    "tier3": {
+      "analogy": "Like an omniscient research librarian who has read an entire university library and can answer questions by predicting the most helpful next word."
+    },
+    "tier4": {
+      "compare": "LLM vs. SLM: LLMs offer broader zero-shot capabilities but require significant GPU resources and present larger attack surfaces; SLMs are lightweight and easier to secure."
+    },
+    "tier5": {
+      "attack_defense": "Attack Vector: Indirect prompt injection via malicious web pages processed by an LLM agent. Defense: Enforce input sanitization, strict system prompt boundaries, and strict output privileges."
+    }
+  },
+  {
+    "id": "B1-C03",
+    "batch": 1,
+    "domain": "Domain 1.1: Basic AI Concepts Related to Cybersecurity",
+    "tier1": {
+      "term": "Small Language Model",
+      "acronym": "SLM",
+      "expansion": "Small Language Model"
+    },
+    "tier2": {
+      "category": "Domain 1.1 - AI Types & Architectures",
+      "concept": "A highly compact language model (typically under 10B parameters) optimized for specialized domain tasks, edge deployment, lower latency, and reduced computational overhead."
+    },
+    "tier3": {
+      "analogy": "Like a dedicated medical specialist who knows everything about cardiology rather than a general practitioner who knows a little about everything."
+    },
+    "tier4": {
+      "compare": "SLM vs. LLM: SLMs have a drastically reduced attack surface, can run locally on secure edge hardware, and cost less to audit, but lack broader general reasoning."
+    },
+    "tier5": {
+      "attack_defense": "Attack Vector: On-device parameter tampering or quantization corruption. Defense: Validate model file checksums (SHA-256), enforce secure boot, and isolate execution environments."
+    }
+  },
+  {
+    "id": "B1-C04",
+    "batch": 1,
+    "domain": "Domain 1.1: Basic AI Concepts Related to Cybersecurity",
+    "tier1": {
+      "term": "Transformer Architecture",
+      "acronym": "Transformer",
+      "expansion": "Transformer Neural Network Architecture"
+    },
+    "tier2": {
+      "category": "Domain 1.1 - AI Types & Architectures",
+      "concept": "A deep learning architecture relying on self-attention mechanisms to process entire sequences in parallel, computing contextual relationships between token positions."
+    },
+    "tier3": {
+      "analogy": "Like reading an entire document at once and instantly highlighting key context connections across pages, rather than reading word-by-word with a magnifying glass."
+    },
+    "tier4": {
+      "compare": "Transformers vs. Recurrent Neural Networks (RNNs): Transformers enable high-speed parallel GPU training over huge contexts; RNNs process sequentially and suffer from vanishing gradients."
+    },
+    "tier5": {
+      "attack_defense": "Attack Vector: Context window flooding leading to denial of service (Model DoS) or attention degradation. Defense: Enforce token input quotas, rate limits, and context truncation controls."
+    }
+  },
+  {
+    "id": "B1-C05",
+    "batch": 1,
+    "domain": "Domain 1.1: Basic AI Concepts Related to Cybersecurity",
+    "tier1": {
+      "term": "Generative Adversarial Network",
+      "acronym": "GAN",
+      "expansion": "Generative Adversarial Network"
+    },
+    "tier2": {
+      "category": "Domain 1.1 - AI Types & Architectures",
+      "concept": "A dual-network framework where a Generator creates synthetic data and a Discriminator evaluates its authenticity, driving iterative performance through competition."
+    },
+    "tier3": {
+      "analogy": "Like a counterfeit currency creator trying to pass fake bills past an expert detective; both continuously adapt until the counterfeits are indistinguishable from real money."
+    },
+    "tier4": {
+      "compare": "GANs vs. Standard ML Classifiers: GANs use competitive training to generate synthetic outputs, while standard classifiers evaluate real data inputs against fixed categories."
+    },
+    "tier5": {
+      "attack_defense": "Attack Vector: Adversaries use GANs to forge synthetic biometric markers (voice/face) to bypass MFA. Defense: Implement liveness detection, multi-modal verification, and spatial anti-spoofing."
+    }
+  },
+  {
+    "id": "B1-C06",
+    "batch": 1,
+    "domain": "Domain 1.1: Basic AI Concepts Related to Cybersecurity",
+    "tier1": {
+      "term": "Model Fine-Tuning",
+      "acronym": "Fine-Tuning",
+      "expansion": "Supervised Model Fine-Tuning"
+    },
+    "tier2": {
+      "category": "Domain 1.1 - Model Training Techniques",
+      "concept": "The process of taking a pre-trained base model and updating its weight parameters on a smaller domain-specific dataset to adapt its outputs for specialized tasks."
+    },
+    "tier3": {
+      "analogy": "Like taking a general lawyer fresh out of law school and putting them through a intensive bootcamp specializing exclusively in intellectual property law."
+    },
+    "tier4": {
+      "compare": "Fine-Tuning vs. Retrieval-Augmented Generation (RAG): Fine-tuning alters model weight parameters permanently, while RAG retrieves dynamic external facts without updating model weights."
+    },
+    "tier5": {
+      "attack_defense": "Attack Vector: Data poisoning during fine-tuning to insert backdoors or override safety guardrails. Defense: Enforce cryptographic provenance checks and clean dataset verification pipeline audits."
+    }
+  },
+  {
+    "id": "B1-C07",
+    "batch": 1,
+    "domain": "Domain 1.1: Basic AI Concepts Related to Cybersecurity",
+    "tier1": {
+      "term": "Model Quantization",
+      "acronym": "Quantization",
+      "expansion": "Post-Training Model Quantization"
+    },
+    "tier2": {
+      "category": "Domain 1.1 - Model Training Techniques",
+      "concept": "A optimization technique that reduces the numerical precision of model weight parameters (e.g., converting 32-bit floating point FP32 to 8-bit integer INT8) to minimize memory footprint."
+    },
+    "tier3": {
+      "analogy": "Like converting a high-resolution lossless audio file to an MP3 format—it drastically reduces file size with imperceptible loss in performance."
+    },
+    "tier4": {
+      "compare": "Quantization vs. Pruning: Quantization reduces numerical precision of existing weights, while Pruning eliminates redundant or zero-value connections entirely."
+    },
+    "tier5": {
+      "attack_defense": "Attack Vector: Quantization-induced accuracy degradation creating safety policy blind spots. Defense: Perform post-quantization model evaluation and guardrail validation tests prior to deployment."
+    }
+  },
+  {
+    "id": "B1-C08",
+    "batch": 1,
+    "domain": "Domain 1.1: Basic AI Concepts Related to Cybersecurity",
+    "tier1": {
+      "term": "Model Pruning",
+      "acronym": "Pruning",
+      "expansion": "Neural Network Pruning"
+    },
+    "tier2": {
+      "category": "Domain 1.1 - Model Training Techniques",
+      "concept": "Removing unimportant weights, neurons, or attention heads from a trained neural network to decrease model size and speed up inference without impacting accuracy."
+    },
+    "tier3": {
+      "analogy": "Like trimming dead or weak branches off an overgrown tree to concentrate energy on the strongest, most productive limbs."
+    },
+    "tier4": {
+      "compare": "Pruning vs. Quantization: Pruning zeroes out and structurally removes non-essential weights; quantization compresses parameter storage precision across all weights."
+    },
+    "tier5": {
+      "attack_defense": "Attack Vector: Over-pruning causing degradation in anomaly detection sensitivity for critical zero-day events. Defense: Establish baseline benchmarks and automated regression test suites."
+    }
+  },
+  {
+    "id": "B1-C09",
+    "batch": 1,
+    "domain": "Domain 1.1: Basic AI Concepts Related to Cybersecurity",
+    "tier1": {
+      "term": "System Prompt",
+      "acronym": "SysPrompt",
+      "expansion": "System Role Prompt Instructions"
+    },
+    "tier2": {
+      "category": "Domain 1.1 - Prompt Engineering",
+      "concept": "Top-level instructional rules configured by system developers that define the model persona, operational boundaries, behavioral policies, and strict output constraints."
+    },
+    "tier3": {
+      "analogy": "Like security guard standing orders at a facility entrance establishing strict access rules before visitors are allowed inside."
+    },
+    "tier4": {
+      "compare": "System Prompts vs. User Prompts: System prompts establish immutable operational safety rules, whereas User prompts represent variable inputs provided by end users."
+    },
+    "tier5": {
+      "attack_defense": "Attack Vector: System prompt leakage via prompt injection tactics. Defense: Implement prompt firewalls, external guardrail filters, and separate system/user context handling."
+    }
+  },
+  {
+    "id": "B1-C10",
+    "batch": 1,
+    "domain": "Domain 1.1: Basic AI Concepts Related to Cybersecurity",
+    "tier1": {
+      "term": "Zero-Shot & Few-Shot Prompting",
+      "acronym": "Prompting",
+      "expansion": "Zero-Shot / Few-Shot In-Context Learning"
+    },
+    "tier2": {
+      "category": "Domain 1.1 - Prompt Engineering",
+      "concept": "Prompt techniques providing zero examples (Zero-Shot) or a small set of exemplar inputs/outputs (Few-Shot) in the prompt to guide task performance without parameter updates."
+    },
+    "tier3": {
+      "analogy": "Asking someone to solve a puzzle with zero explanation versus giving them two solved sample puzzles first to show them the expected pattern."
+    },
+    "tier4": {
+      "compare": "Few-Shot Prompting vs. Fine-Tuning: Few-shot prompting guides behavior within the immediate context window, while fine-tuning updates parameter weights permanently."
+    },
+    "tier5": {
+      "attack_defense": "Attack Vector: Injected malicious examples (Few-Shot poisoning) altering output handling logic. Defense: Enforce prompt template sanitization and restrict dynamic example insertion."
+    }
+  },
+  {
+    "id": "B1-C11",
+    "batch": 1,
+    "domain": "Domain 1.1: Basic AI Concepts Related to Cybersecurity",
+    "tier1": {
+      "term": "Reinforcement Learning",
+      "acronym": "RL / RLHF",
+      "expansion": "Reinforcement Learning with Human Feedback"
+    },
+    "tier2": {
+      "category": "Domain 1.1 - Model Training Techniques",
+      "concept": "A machine learning paradigm where an agent learns optimal decision policies through trial and error, earning rewards for desired actions and penalties for unwanted ones."
+    },
+    "tier3": {
+      "analogy": "Training a dog using treats for following commands and a firm 'no' for bad behavior until the desired habit is internalized."
+    },
+    "tier4": {
+      "compare": "Reinforcement Learning vs. Supervised Learning: RL learns dynamic behavior policies through environmental trial/reward, while Supervised Learning maps inputs directly to labeled static datasets."
+    },
+    "tier5": {
+      "attack_defense": "Attack Vector: Reward hacking or RLHF poisoning where attackers influence feedback loops to promote toxic outputs. Defense: Implement multi-reviewer validation and automated safety evaluation pipelines."
+    }
+  },
+  {
+    "id": "B1-C12",
+    "batch": 1,
+    "domain": "Domain 1.1: Basic AI Concepts Related to Cybersecurity",
+    "tier1": {
+      "term": "Federated Learning",
+      "acronym": "FL",
+      "expansion": "Federated Machine Learning"
+    },
+    "tier2": {
+      "category": "Domain 1.1 - Model Training Techniques",
+      "concept": "A decentralized model training technique where edge devices train models locally on private data and transmit updated model weight gradients—rather than raw data—to a central server."
+    },
+    "tier3": {
+      "analogy": "A team of detectives solving local cases in their own cities and sharing only their lesson summaries to update a shared playbook without revealing confidential witness files."
+    },
+    "tier4": {
+      "compare": "Federated Learning vs. Centralized Learning: Federated Learning preserves data privacy by keeping training data localized on device, whereas Centralized Learning requires pooling data into a single repository."
+    },
+    "tier5": {
+      "attack_defense": "Attack Vector: Model poisoning attacks via rogue participating edge nodes. Defense: Apply differential privacy, secure aggregation protocols, and robust anomaly detection on gradient updates."
+    }
+  }
+]
